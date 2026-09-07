@@ -10,6 +10,10 @@ def camera(request):
     return render(request, "core/camera.html")
 
 
+def camera_viewer(request):
+    return render(request, "core/camera_viewer.html")
+
+
 def contact(request):
     if request.method == "POST":
         name = request.POST.get("name", "").strip()

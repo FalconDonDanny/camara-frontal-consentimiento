@@ -5,7 +5,7 @@
     <div class="camera-intro">
         <p class="eyebrow">Prueba privada <span></span> Sin grabación</p>
         <h1>Activa tu<br><em>cámara.</em></h1>
-        <p>Introduce tu nombre y acepta el consentimiento. La cámara frontal se mostrará únicamente en esta página y el navegador te pedirá permiso.</p>
+        <p>Introduce tu nombre, acepta el consentimiento y usa un código privado para transmitir tu cámara en directo al visor.</p>
     </div>
     <div class="camera-panel">
         <div class="camera-frame">
@@ -15,6 +15,9 @@
         </div>
         <p class="camera-name-display">Participante: <strong id="camera-name-display">Sin identificar</strong></p>
         <form id="camera-form">
+            <label for="camera-room">Código de sala
+                <input id="camera-room" name="room" type="text" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="Ej. 482913" required>
+            </label>
             <label for="camera-name">Tu nombre
                 <input id="camera-name" name="name" type="text" autocomplete="name" maxlength="80" required>
             </label>
@@ -23,8 +26,10 @@
                 <span>Entiendo que esta página usará mi cámara frontal, sin grabar ni enviar el vídeo.</span>
             </label>
             <button id="camera-start" class="button button-dark" type="submit">Permitir cámara <span aria-hidden="true">↗</span></button>
-            <p id="camera-message" class="camera-message" role="status">Tu navegador solicitará permiso al continuar.</p>
+            <p id="camera-message" class="camera-message" role="status">El visor necesitará el mismo código de sala.</p>
         </form>
+        <p class="camera-link">Para ver la transmisión abre <a href="{% url 'camera-viewer' %}">/visor/</a> en el computador.</p>
     </div>
 </section>
 {% endblock %}
+{% block extra_scripts %}<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block title %}Visor de cámara | Norte Studio{% endblock %}
+{% block content %}
+<section class="camera-page viewer-page">
+    <div class="camera-intro">
+        <p class="eyebrow">Visor autorizado <span></span> En directo</p>
+        <h1>Ver la<br><em>cámara.</em></h1>
+        <p>Introduce el código que comparte voluntariamente la persona emisora. Solo podrás ver el vídeo mientras ella mantenga el permiso activo.</p>
+    </div>
+    <div class="camera-panel">
+        <div class="camera-frame">
+            <video id="viewer-video" autoplay playsinline controls aria-label="Transmisión de cámara en directo"></video>
+            <div id="viewer-placeholder" class="camera-placeholder">Esperando una transmisión autorizada</div>
+            <span class="camera-live"><i></i> Visor en directo</span>
+        </div>
+        <p class="camera-name-display">Participante: <strong id="viewer-name-display">Esperando conexión</strong></p>
+        <form id="viewer-form">
+            <label for="viewer-room">Código de sala
+                <input id="viewer-room" name="room" type="text" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="Ej. 482913" required>
+            </label>
+            <button class="button button-dark" type="submit">Conectar al directo <span aria-hidden="true">↗</span></button>
+            <p id="viewer-message" class="camera-message" role="status">La cámara solo se conectará con el consentimiento de la persona emisora.</p>
+        </form>
+    </div>
+</section>
+{% endblock %}
+{% block extra_scripts %}<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>{% endblock %}
