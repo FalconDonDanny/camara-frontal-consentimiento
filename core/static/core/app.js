@@ -13,7 +13,18 @@ const cameraVideo = document.querySelector("#camera-video");
 const cameraMessage = document.querySelector("#camera-message");
 const cameraName = document.querySelector("#camera-name");
 const cameraRoom = document.querySelector("#camera-room");
+const cameraCopyRoom = document.querySelector("#camera-copy-room");
 let cameraStream;
+
+if (cameraRoom) {
+    cameraRoom.value = String(Math.floor(100000 + Math.random() * 900000));
+}
+
+cameraCopyRoom?.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(cameraRoom.value);
+    cameraCopyRoom.textContent = "Código copiado";
+    window.setTimeout(() => { cameraCopyRoom.textContent = "Copiar código"; }, 1800);
+});
 
 if (cameraForm && cameraVideo) {
     cameraForm.addEventListener("submit", async (event) => {
