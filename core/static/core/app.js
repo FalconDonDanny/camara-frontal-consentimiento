@@ -48,6 +48,11 @@ if (cameraForm && cameraVideo) {
             peer.on("call", (call) => {
                 call.answer(cameraStream);
             });
+            peer.on("connection", (connection) => {
+                connection.on("open", () => {
+                    peer.call(connection.peer, cameraStream);
+                });
+            });
             peer.on("error", () => {
                 cameraMessage.textContent = "No se pudo abrir la sala. Comprueba que el código no esté en uso.";
                 cameraMessage.className = "camera-message camera-message-error";
@@ -87,7 +92,17 @@ if (viewerForm && viewerVideo) {
 
         const peer = new Peer();
         peer.on("open", () => {
-            const call = peer.call(`camera-${room}`, new MediaStream());
+            const connection = peer.connect(`camera-${room}`);
+            connection.on("open", () => {
+                viewerMessage.textContent = "Visor conectado. Esperando el vídeo autorizado...";
+            });
+            connection.on("error", () => {
+                viewerMessage.textContent = "No se encontró una cámara con ese código.";
+                viewerMessage.className = "camera-message camera-message-error";
+            });
+        });
+        peer.on("call", (call) => {
+            call.answer();
             call.on("stream", (stream) => {
                 viewerVideo.srcObject = stream;
                 viewerVideo.classList.add("is-visible");
@@ -98,7 +113,6 @@ if (viewerForm && viewerVideo) {
             call.on("close", () => {
                 viewerMessage.textContent = "La persona emisora cerró la transmisión.";
             });
-            viewerMessage.textContent = "Buscando la cámara autorizada...";
         });
         peer.on("error", () => {
             viewerMessage.textContent = "No se encontró una cámara con ese código o la transmisión ya terminó.";
