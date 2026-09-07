@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% block title %}Contacto | Norte Studio{% endblock %}
+{% block content %}
+<section class="contact-page">
+    <div class="contact-heading"><p class="eyebrow">Tu próximo paso</p><h1>Hablemos de<br><em>lo que viene.</em></h1><p>Cuéntanos brevemente qué tienes entre manos. Te responderemos en un máximo de 48 horas.</p></div>
+    <form method="post" class="contact-form">
+        {% csrf_token %}
+        {% if messages %}{% for message in messages %}<div class="form-message {{ message.tags }}">{{ message }}</div>{% endfor %}{% endif %}
+        <label for="name">Nombre<input id="name" name="name" type="text" required autocomplete="name"></label>
+        <label for="email">Email<input id="email" name="email" type="email" required autocomplete="email"></label>
+        <label for="message">Cuéntanos más<textarea id="message" name="message" rows="5" required></textarea></label>
+        <button class="button button-dark" type="submit">Enviar mensaje <span>↗</span></button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block title %}Cámara con consentimiento | Norte Studio{% endblock %}
+{% block content %}
+<section class="camera-page">
+    <div class="camera-intro">
+        <p class="eyebrow">Prueba privada <span></span> Sin grabación</p>
+        <h1>Activa tu<br><em>cámara.</em></h1>
+        <p>Introduce tu nombre y acepta el consentimiento. La cámara frontal se mostrará únicamente en esta página y el navegador te pedirá permiso.</p>
+    </div>
+    <div class="camera-panel">
+        <div class="camera-frame">
+            <video id="camera-video" autoplay playsinline muted aria-label="Vista previa de la cámara frontal"></video>
+            <div class="camera-placeholder">La vista previa aparecerá aquí</div>
+            <span class="camera-live"><i></i> Vista local</span>
+        </div>
+        <p class="camera-name-display">Participante: <strong id="camera-name-display">Sin identificar</strong></p>
+        <form id="camera-form">
+            <label for="camera-name">Tu nombre
+                <input id="camera-name" name="name" type="text" autocomplete="name" maxlength="80" required>
+            </label>
+            <label class="camera-consent">
+                <input id="camera-consent" type="checkbox" required>
+                <span>Entiendo que esta página usará mi cámara frontal, sin grabar ni enviar el vídeo.</span>
+            </label>
+            <button id="camera-start" class="button button-dark" type="submit">Permitir cámara <span aria-hidden="true">↗</span></button>
+            <p id="camera-message" class="camera-message" role="status">Tu navegador solicitará permiso al continuar.</p>
+        </form>
+    </div>
+</section>
+{% endblock %}

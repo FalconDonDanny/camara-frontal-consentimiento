@@ -1,0 +1,27 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Norte Studio{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{% url 'home' %}"><span class="brand-mark">N</span> NORTE<span class="brand-dot">.</span></a>
+        <nav aria-label="Navegación principal">
+            <a href="{% url 'home' %}">Inicio</a>
+            <a href="{% url 'camera' %}">Cámara</a>
+            <a href="#servicios">Servicios</a>
+            <a class="nav-cta" href="{% url 'contact' %}">Hablemos <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer class="site-footer"><span>© 2026 Norte Studio</span><span>Diseño con intención desde Madrid</span></footer>
+    <script src="{% static 'core/app.js' %}"></script>
+</body>
+</html>

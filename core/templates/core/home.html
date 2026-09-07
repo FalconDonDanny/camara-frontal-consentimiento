@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block title %}Norte Studio | Ideas que avanzan{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-copy reveal">
+        <p class="eyebrow">Estudio digital independiente <span></span> 2026</p>
+        <h1>Ideas claras.<br><em>Resultados reales.</em></h1>
+        <p class="hero-text">Creamos marcas y productos digitales que convierten lo complejo en algo fácil de entender, usar y recordar.</p>
+        <a class="button button-dark" href="{% url 'contact' %}">Cuéntanos tu idea <span>↗</span></a>
+    </div>
+    <div class="hero-art reveal" aria-label="Composición geométrica decorativa">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="sun"></div>
+        <div class="art-label">ESTRATEGIA<br>+ DISEÑO<br>+ CÓDIGO</div>
+        <div class="art-number">01</div>
+    </div>
+</section>
+<section class="marquee" aria-label="Áreas de trabajo"><span>MARCA</span><b>✳</b><span>PRODUCTO</span><b>✳</b><span>EXPERIENCIA</span><b>✳</b><span>MARCA</span></section>
+<section class="services" id="servicios">
+    <div class="section-intro"><p class="eyebrow">Lo que hacemos</p><h2>Menos ruido.<br>Más <em>dirección.</em></h2></div>
+    <div class="service-list">
+        <article><span>01</span><h3>Estrategia</h3><p>Encontramos la idea que hace que todo encaje.</p><strong>↗</strong></article>
+        <article><span>02</span><h3>Identidad</h3><p>Construimos sistemas visuales con personalidad.</p><strong>↗</strong></article>
+        <article><span>03</span><h3>Digital</h3><p>Diseñamos experiencias que la gente quiere usar.</p><strong>↗</strong></article>
+    </div>
+</section>
+<section class="closing"><p class="eyebrow">¿Tienes un reto?</p><h2>Hagamos que<br><em>pase algo.</em></h2><a class="button button-light" href="{% url 'contact' %}">Empezar una conversación <span>↗</span></a></section>
+{% endblock %}
