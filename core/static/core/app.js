@@ -14,16 +14,27 @@ const cameraMessage = document.querySelector("#camera-message");
 const cameraName = document.querySelector("#camera-name");
 const cameraRoom = document.querySelector("#camera-room");
 const cameraCopyRoom = document.querySelector("#camera-copy-room");
+const cameraCopyLink = document.querySelector("#camera-copy-link");
 let cameraStream;
 
 if (cameraRoom) {
-    cameraRoom.value = String(Math.floor(100000 + Math.random() * 900000));
+    const roomFromUrl = new URLSearchParams(window.location.search).get("sala");
+    cameraRoom.value = /^\d{6}$/.test(roomFromUrl || "")
+        ? roomFromUrl
+        : String(Math.floor(100000 + Math.random() * 900000));
+    window.history.replaceState({}, "", `${window.location.pathname}?sala=${cameraRoom.value}`);
 }
 
 cameraCopyRoom?.addEventListener("click", async () => {
     await navigator.clipboard.writeText(cameraRoom.value);
     cameraCopyRoom.textContent = "Código copiado";
     window.setTimeout(() => { cameraCopyRoom.textContent = "Copiar código"; }, 1800);
+});
+
+cameraCopyLink?.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(window.location.href);
+    cameraCopyLink.textContent = "Enlace copiado";
+    window.setTimeout(() => { cameraCopyLink.textContent = "Copiar enlace"; }, 1800);
 });
 
 if (cameraForm && cameraVideo) {
@@ -91,6 +102,11 @@ const viewerRoom = document.querySelector("#viewer-room");
 const viewerMessage = document.querySelector("#viewer-message");
 
 if (viewerForm && viewerVideo) {
+    const roomFromUrl = new URLSearchParams(window.location.search).get("sala");
+    if (/^\d{6}$/.test(roomFromUrl || "")) {
+        viewerRoom.value = roomFromUrl;
+    }
+
     viewerForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const room = viewerRoom.value.trim();
