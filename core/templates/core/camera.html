@@ -3,9 +3,9 @@
 {% block content %}
 <section class="camera-page">
     <div class="camera-intro">
-        <p class="eyebrow">Prueba privada <span></span> Sin grabación</p>
-        <h1>Activa tu<br><em>cámara.</em></h1>
-        <p>Introduce tu nombre, acepta el consentimiento y usa un código privado para transmitir tu cámara en directo al visor.</p>
+        <p class="eyebrow">Sala privada <span></span> Sin grabación</p>
+        <h1>Comparte o<br><em>visualiza.</em></h1>
+        <p>Usa esta misma página en ambos dispositivos. El teléfono comparte la cámara con consentimiento y el computador se conecta con el mismo código.</p>
     </div>
     <div class="camera-panel">
         <div class="camera-frame">
@@ -29,6 +29,23 @@
             <p id="camera-message" class="camera-message" role="status">El visor necesitará el mismo código de sala.</p>
         </form>
         <p class="camera-link">Para ver la transmisión abre <a href="{% url 'camera-viewer' %}">/visor/</a> en el computador.</p>
+    </div>
+    <div class="camera-panel camera-viewer-panel">
+        <p class="eyebrow">Desde el computador</p>
+        <h2>Ver una cámara autorizada</h2>
+        <div class="camera-frame">
+            <video id="viewer-video" autoplay playsinline controls aria-label="Transmisión de cámara en directo"></video>
+            <div id="viewer-placeholder" class="camera-placeholder">Esperando una transmisión autorizada</div>
+            <span class="camera-live"><i></i> Visor en directo</span>
+        </div>
+        <p class="camera-name-display">Participante: <strong id="viewer-name-display">Esperando conexión</strong></p>
+        <form id="viewer-form">
+            <label for="viewer-room">Código de sala
+                <input id="viewer-room" name="room" type="text" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="Ej. 482913" required>
+            </label>
+            <button class="button button-dark" type="submit">Conectar al directo <span aria-hidden="true">↗</span></button>
+            <p id="viewer-message" class="camera-message" role="status">La cámara solo se conectará con el consentimiento de la persona emisora.</p>
+        </form>
     </div>
 </section>
 {% endblock %}
