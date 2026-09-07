@@ -4,6 +4,10 @@ ENLACE DE LA APP
 Enlace inicial:
 https://defence-green-sagem-adrian.trycloudflare.com/camara/
 
+Enlace usado hoy:
+https://defence-green-sagem-adrian.trycloudflare.com/camara/?sala=305222
+Codigo de sala usado hoy: 305222
+
 Uso:
 1. Abre el enlace inicial en el telefono.
 2. El telefono genera el codigo y convierte la direccion en `...?sala=123456`.
@@ -12,3 +16,11 @@ Uso:
 5. En Windows, el codigo ya aparecera rellenado; pulsa "Conectar al directo".
 
 La transmision no se graba. El enlace funciona mientras Django y Cloudflare Tunnel esten encendidos.
+
+Archivos principales del codigo:
+- core/templates/core/camera.html
+- core/templates/core/camera_viewer.html
+- core/static/core/app.js
+- core/static/core/styles.css
+- core/views.py
+- core/urls.py
