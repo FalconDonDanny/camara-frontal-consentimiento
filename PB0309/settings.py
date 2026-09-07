@@ -4,7 +4,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-clase-django-local")
 DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "testserver", ".onrender.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "testserver", ".onrender.com", ".trycloudflare.com"]
 if os.environ.get("RENDER_EXTERNAL_HOSTNAME"):
     ALLOWED_HOSTS.append(os.environ["RENDER_EXTERNAL_HOSTNAME"])
 
