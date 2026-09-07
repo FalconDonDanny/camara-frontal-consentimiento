@@ -1,11 +1,14 @@
 ENLACE DE LA APP
 =================
 
+Enlace inicial:
 https://defence-green-sagem-adrian.trycloudflare.com/camara/
 
 Uso:
-1. Abre este enlace en el telefono y en Windows.
-2. En el telefono, copia el codigo automatico, escribe el nombre, acepta el consentimiento y permite la camara.
-3. En Windows, escribe el mismo codigo y pulsa "Conectar al directo".
+1. Abre el enlace inicial en el telefono.
+2. El telefono genera el codigo y convierte la direccion en `...?sala=123456`.
+3. Pulsa "Copiar enlace" y abre esa URL completa en Windows.
+4. En el telefono, escribe el nombre, acepta el consentimiento y permite la camara.
+5. En Windows, el codigo ya aparecera rellenado; pulsa "Conectar al directo".
 
 La transmision no se graba. El enlace funciona mientras Django y Cloudflare Tunnel esten encendidos.
